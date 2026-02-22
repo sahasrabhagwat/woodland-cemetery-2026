@@ -1,0 +1,555 @@
+/* Contains vars for each element. */
+* {
+    --button-hover-color: rgb(100, 114, 46);
+    --grave-background: rgba(255, 255, 0, 0.25);
+    --grave-border-color: rgba(255, 255, 0);
+    --general-background: rgba(135, 149, 81, 0.9);
+    --general-border: 3px solid rgba(80, 94, 26, 1);
+    --hide-color: rgb(220, 220, 220);
+    --landmark-background: rgba(16, 88, 196, 0.25);
+    --landmark-border-color: rgb(16, 88, 196);
+    --select-shadow: 0 0 0 3px rgba(172, 217, 232, 0.25);
+}
+
+* {
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+    z-index: 2;
+}
+
+*:hover {
+    cursor: default;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(85, 99, 31);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(115, 129, 61);
+}
+
+html {
+    background: var(--general-background);
+}
+
+#loading {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    font-size: 17pt;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+    padding: 2px 10px 2px 10px;
+    position: absolute;
+    right: 0;
+    top: 1%;
+    width: 4.4em;
+    z-index: 2;
+}
+
+#search-form {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+
+    width: 25vw;
+    min-width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+}
+
+#input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+label {
+    margin-right: 10px;
+}
+
+#name-input {
+    border: var(--general-border);
+    border-radius: 10px;
+    color: black;
+    height: 2em;
+    font-size: 12px;
+    flex: 1;
+}
+
+#button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8px;
+}
+
+#show-notable-burials,
+#submit-search-form {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    font-size: 12pt;
+    height: 2em;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 2px 5px;
+    transition: background 0.5s;
+    flex: 1;
+    font-size: 12px;
+}
+
+#show-notable-burials:hover,
+#submit-search-form:hover {
+    background: var(--button-hover-color);
+    cursor: pointer;
+}
+
+#person-data {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    display: none;
+    left: 10px;
+    width: 25vw;
+    height: 30vh;
+    overflow-y: auto;
+    position: absolute;
+    bottom: 10px;
+    z-index: 2;
+}
+
+#person-count {
+    color: black;
+    font-size: 17pt;
+    margin: 7px 5px 7px 5px;
+    text-shadow: rgba(80, 94, 26, 1) 0 0 3px;
+}
+
+.confirmed-tag {
+    display: inline-block;
+    background-color: rgba(10, 160, 10, 0.8);
+    color: white;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.person-record {
+    margin-left: 5px;
+}
+
+.person-record h2 {
+    margin-left: 5px;
+}
+
+.person-record p {
+    margin-left: 5px;
+}
+
+.person-record hr {
+    background: rgba(80, 94, 26, 1);
+    border: none;
+    height: 3px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: calc(100% - 5px);
+}
+
+.person-info {
+    width: 90%;
+}
+
+.person-name {
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.find-a-grave-link {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    font-size: 12pt;
+    height: 2em;
+    margin: 5px;
+    padding: 2px 5px 2px 5px;
+    transition: background 0.5s;
+}
+
+.sketchfab-view {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    font-size: 12pt;
+    height: 2em;
+    margin: 5px;
+    padding: 2px 5px 2px 5px;
+    transition: background 0.5s;
+}
+
+#person-hide {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 5px;
+    color: var(--hide-color);
+    cursor: pointer;
+    height: 1.5em;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 1.5em;
+}
+
+#plot-data {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    display: none;
+    left: 10px;
+    padding: 2px 5px;
+    position: absolute;
+    bottom: 10px;
+    max-width: 25vw;
+    max-height: 37vh;
+    width: auto;
+    height: auto;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+
+#plot-hide {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 5px;
+    color: var(--hide-color);
+    cursor: pointer;
+    height: 1.5em;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 1.5em;
+}
+
+#plot-name {
+    margin: 5px 10px 5px 10px;
+}
+
+#plot-border {
+    background: rgba(80, 94, 26, 1);
+    border: none;
+    height: 3px;
+    width: 100%;
+}
+
+#plot-inhabitants {
+    height: calc(25vh - 60px);
+    overflow-y: auto;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.plot-inhabitant {
+    cursor: pointer;
+}
+
+#sketchfab-container {
+    background-color: var(--general-background);
+    border: var(--general-border);
+    border-radius: 15px;
+    display: none;
+    height: 60%;
+    justify-content: center;
+    left: 30%;
+    position: absolute;
+    top: 20%;
+    width: 60%;
+    z-index: 2;
+}
+
+#sketchfab-title {
+    padding: 2px 5px 2px 5px;
+}
+
+#sketchfab-border {
+    background: rgba(80, 94, 26, 1);
+    border: none;
+    height: 3px;
+    width: 100%;
+}
+
+#sketchfab-embed {
+    border: var(--general-border);
+    border-radius: 10px;
+    height: 80%;
+    left: 5%;
+    margin: auto;
+    position: relative;
+    top: 5%;
+    width: 90%;
+}
+
+#sketchfab-hide {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 5px;
+    color: var(--hide-color);
+    cursor: pointer;
+    height: 1.5em;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 1.5em;
+}
+
+#label {
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 10px;
+    display: none;
+    padding: 2px 5px 2px 5px;
+    position: absolute;
+}
+
+
+/*----------------------------------------------------------------*/
+
+
+#map-image,
+#map-highlights {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+#map-container {
+    position: relative;
+    height: 100vh;
+}
+
+#loading {
+    z-index: 10;
+}
+
+#search-form {
+    z-index: 10;
+}
+
+#person-data {
+    z-index: 10;
+}
+
+#plot-data {
+    z-index: 10;
+}
+
+#sketchfab-container {
+    z-index: 10;
+}
+
+#label {
+    z-index: 10;
+}
+
+#mobile-search-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    background: var(--general-background);
+    border: var(--general-border);
+    border-radius: 50%;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    line-height: 45px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#search-icon {
+    width: 28px;
+    height: 28px;
+    margin-top: 7px;
+}
+
+
+@media (max-width: 768px) {
+    #mobile-search-toggle {
+        display: block;
+    }
+
+    #search-form {
+        display: none;
+        position: fixed;
+        top: auto;
+        bottom: 80px;
+        right: 20px;
+        left: auto;
+        width: 80%;
+        max-width: 300px;
+        margin: 0;
+        padding: 10px;
+        z-index: 10;
+    }
+
+    #search-form.visible {
+        display: flex;
+    }
+
+    #person-data {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: auto;
+        width: 100%;
+        height: auto;
+        max-height: 20vh;
+        max-width: none;
+        border-radius: 10px 10px 0 0;
+        z-index: 12;
+    }
+
+    #plot-data {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: auto;
+        width: 100%;
+        height: auto;
+        max-height: 20vh;
+        max-width: none;
+        border-radius: 10px 10px 0 0;
+        z-index: 12;
+    }
+
+    .person-record h2,
+    .person-record p {
+        margin: 3px 5px;
+        font-size: 0.9em;
+    }
+
+    #person-count {
+        margin: 5px;
+        font-size: 14pt;
+    }
+
+    #plot-name {
+        font-size: 14pt;
+        margin: 5px;
+    }
+
+    #name-input {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #show-notable-burials,
+    #submit-search-form {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+
+/*----------------------------------------------------------------*/
+
+
+.landmark {
+    fill: var(--landmark-background);
+    stroke: var(--landmark-border-color);
+    stroke-width: 3px;
+}
+
+.grave,
+.MHillside,
+.D,
+.ZZ {
+    fill: var(--grave-background);
+    opacity: 0;
+    stroke: var(--grave-border-color);
+    stroke-width: 3px;
+}
+
+/* Custom animation classes because I don't like JQuery. */
+.fade-in {
+    animation: fadeIn 0.5s linear 1;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s linear 1;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
