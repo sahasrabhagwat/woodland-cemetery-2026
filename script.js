@@ -20,7 +20,7 @@ const FIND_A_GRAVE_ID = 12;
 const SKETCHFAB_ID = 13;
 const CONFIRMED = 14;
 
-const SINGLE_GRAVES = ['D', 'ZZ', 'MHillside'];
+const SINGLE_GRAVES = ['A','D', 'ZZ', 'MHillside'];
 
 // Section D row ranges
 const SECTION_D_ROWS = [
@@ -493,8 +493,14 @@ function displayPlot(plotInfo) {
 
   } else {
     sheetData.all.forEach((person) => {
-      if (plotInfo == `${person[SECTION]}${person[LOT_NUMBER]}`)
-        people.push(person);
+      if(SINGLE_GRAVES.includes(person[SECTION])) {
+        if (plotInfo == `${person[SECTION]}${person[GRAVE_NUMBER]}`)
+          people.push(person);
+      } else {
+          if (plotInfo == `${person[SECTION]}${person[LOT_NUMBER]}`)
+            people.push(person);
+      }
+      
     });
   }
 
