@@ -517,6 +517,7 @@ body {
 .grave,
 .MHillside,
 .D,
+.I,
 .ZZ {
     fill: var(--grave-background);
     opacity: 0;
