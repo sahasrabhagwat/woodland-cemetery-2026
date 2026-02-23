@@ -292,7 +292,33 @@ window.onload = () => {
       displayPlot(polygon.classList[0] + " " + polygon.classList[1]);
     };
   }
-
+  //Event listener specifically for section I -- created on 2-22-2026 based on section D code from 2025 group
+    var sectionIPolygons = document.querySelectorAll('[class^="I "]');
+    for (let polygon of sectionIPolygons) {
+      // Display label and polygon for section on hover
+      polygon.onmouseover = () => {
+        label.style.display = "block";
+        polygon.style.opacity = 1;
+      };
+  
+      // Updating the value and position of the label
+      polygon.onmousemove = (evt) => {
+        label.style.left = `${evt.clientX + 10}px`;
+        label.style.top = `${evt.clientY + 10}px`;
+        label.innerText = polygon.classList[0] + " " + polygon.classList[1];
+      };
+  
+      // Hide when not hovering over
+      polygon.onmouseleave = () => {
+        label.style.display = "none";
+        polygon.style.opacity = 0;
+      };
+  
+      // On click display all entries for the given row
+      polygon.onclick = () => {
+        displayPlot(polygon.classList[0] + " " + polygon.classList[1]);
+      };
+    }
   // Adding the notable burials functionality.
   document.getElementById("show-notable-burials").onclick = () => {
     displayPlot("Notable Burials");
